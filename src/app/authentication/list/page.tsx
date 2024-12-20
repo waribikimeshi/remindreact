@@ -30,7 +30,7 @@ export default function Home() {
             <div>http://localhost:3000/authentication/list</div>
             <div>リスト</div>
             <div>app\authentication\list\page.tsx</div>
-            <Link href="/">エントリポイントへ遷移</Link>
+            <p><Link href="/">エントリポイントへ遷移</Link></p>
 
         </>
     )

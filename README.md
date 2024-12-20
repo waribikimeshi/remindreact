@@ -77,7 +77,8 @@ app router ってのが最新になってる。
 １ app 配下に URL と紐づくフォルダ作成
 ２ page.tsx ファイル作成
 ３ リンクは<a>じゃなく<Link>。ページ読み込みが動的なので速い。
-４ layout.tsx に<body>が書かれている。<html lang="ja">
+４ layout.tsx に<body>が書かれている。<html lang="ja">書ききれないので TODO 打つ。<HEAD>は MetaData で設定する。
+５ public は画像など静的リソースを page.tsx で使える。next.js の<Image>。public/images にした方がよさそう
 
 TODO
 list 初期表示 レイアウト

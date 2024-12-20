@@ -79,6 +79,9 @@ app router ってのが最新になってる。
 ３ リンクは<a>じゃなく<Link>。ページ読み込みが動的なので速い。
 ４ layout.tsx に<body>が書かれている。<html lang="ja">書ききれないので TODO 打つ。<HEAD>は MetaData で設定する。
 ５ public は画像など静的リソースを page.tsx で使える。next.js の<Image>。public/images にした方がよさそう
+６ css は public だめ。<HEAD>の<link>で通常取り込むが、MetaData では設定できない。app 配下に css 作って page で import する方式。
+./grobals.css でも OK。元々のはぶち消して OK。class 名はそのまま。共通で使うならこっち。
+./page.module.css っていうモジュール使うのが新しいやり方らしい。元々のはぶち消して OK。クラス名は前後にユニークなものを付与して生成される。個別に使いたい時はこっち。自動で競合しない。
 
 TODO
 list 初期表示 レイアウト

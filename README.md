@@ -87,6 +87,9 @@ vercel
 404 はデプロイを other⇒next.js にしてないのが原因
 https://remindreact-lonayciam-waribikimeshis-projects.vercel.app/
 
+git
+tortise git 使っていたが、vscode のサイドバー３番目にあった。ファイルの＋ボタンでステージングしないといけない。エクスプローラ開かなくていいので使う。
+
 TODO
 list 初期表示 レイアウト
 list 初期表示 ajax

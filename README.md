@@ -34,3 +34,33 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+rest
+GET http://localhost:8080/v20241209/authentication/get/3
+
+GET http://localhost:8080/v20241209/authentication/list
+
+PATCH http://localhost:8080/v20241209/authentication/patch HTTP/1.1
+content-type: application/json
+
+{
+"id": "13",
+"mailAddress": "hogehoge@gmail.com",
+"version": "16"
+}
+
+POST http://localhost:8080/v20241209/authentication/post HTTP/1.1
+content-type: application/json
+{
+"mailAddress": "waribikimeshi@gmail.com",
+"password": "{bcrypt}$2a$10$BooaIiRno2t5XKmsroWHG.HC9QqIa8Z4BUahMLaI8vRj3Oo4Tfyx.",
+"role": "ROLE_PROVIDER_CONTRACT_2",
+"expirationDate": "9999-12-31",
+"lock": false,
+"enabled": true,
+"version": 8,
+"createdUser": "anonymousUser",
+"createDatetime": "2020-08-15T02:58:00.000+00:00",
+"lastModifiedUser": "waribikimeshi@gmail.com",
+"lastModifiedDatetime": "2021-01-25T03:39:44.000+00:00"
+}

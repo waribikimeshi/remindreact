@@ -83,6 +83,10 @@ app router ってのが最新になってる。
 ./grobals.css でも OK。元々のはぶち消して OK。class 名はそのまま。共通で使うならこっち。
 ./page.module.css っていうモジュール使うのが新しいやり方らしい。元々のはぶち消して OK。クラス名は前後にユニークなものを付与して生成される。個別に使いたい時はこっち。自動で競合しない。
 
+vercel
+404 はデプロイを other⇒next.js にしてないのが原因
+https://remindreact-lonayciam-waribikimeshis-projects.vercel.app/
+
 TODO
 list 初期表示 レイアウト
 list 初期表示 ajax

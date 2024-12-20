@@ -1,4 +1,11 @@
+import { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+    //TODO:タイトル個別画面でmetadata定義
+    title: "authentication/list | remindreact",  
+  };
+  
 
 //TODO:型。maketypesにrestのjson貼付けて作成した
 export interface Authentication {

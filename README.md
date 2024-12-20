@@ -77,6 +77,7 @@ app router ってのが最新になってる。
 １ app 配下に URL と紐づくフォルダ作成
 ２ page.tsx ファイル作成
 ３ リンクは<a>じゃなく<Link>。ページ読み込みが動的なので速い。
+４ layout.tsx に<body>が書かれている。<html lang="ja">
 
 TODO
 list 初期表示 レイアウト
@@ -87,3 +88,4 @@ crud 初期表示 ajax
 crud 登録ボタン
 rest save のみでいいのでは
 crud 削除ボタン
+css

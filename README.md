@@ -35,6 +35,13 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
+ide
+vscode
+
+framework
+react
+next.js
+
 rest
 GET http://localhost:8080/v20241209/authentication/get/3
 
@@ -64,3 +71,19 @@ content-type: application/json
 "lastModifiedUser": "waribikimeshi@gmail.com",
 "lastModifiedDatetime": "2021-01-25T03:39:44.000+00:00"
 }
+
+next.js メモ
+app router ってのが最新になってる。
+１ app 配下に URL と紐づくフォルダ作成
+２ page.tsx ファイル作成
+３ リンクは<a>じゃなく<Link>。ページ読み込みが動的なので速い。
+
+TODO
+list 初期表示 レイアウト
+list 初期表示 ajax
+list 編集ボタンで CRUD 画面遷移。id 渡し
+crud 初期表示 レイアウト
+crud 初期表示 ajax
+crud 登録ボタン
+rest save のみでいいのでは
+crud 削除ボタン

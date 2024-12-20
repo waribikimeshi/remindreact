@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 //TODO:型。maketypesにrestのjson貼付けて作成した
 export interface Authentication {
     id: number;
@@ -21,6 +23,8 @@ export default function Home() {
             <div>http://localhost:3000/authentication/list</div>
             <div>リスト</div>
             <div>app\authentication\list\page.tsx</div>
+            <Link href="/">エントリポイントへ遷移</Link>
+
         </>
     )
 }

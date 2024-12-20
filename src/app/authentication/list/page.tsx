@@ -25,15 +25,37 @@ export interface Authentication {
     lastModifiedDatetime: string;
   }
   
-
-export default function Home() {
+export default async function Page() {
+    const data = await fetch('http://localhost:8080/v20241209/authentication/list');
+    const posts = await data.json();
     return (
+    
         <>
         <div className="container">
             <div className={styles.sitetitle}>http://localhost:3000/authentication/list</div>
             <div>リスト</div>
             <div>app\authentication\list\page.tsx</div>
             <p><Link href="/">エントリポイントへ遷移</Link></p>
+
+        <ul>
+            {posts.map((post:Authentication) => (
+            <li key={post.id}>
+                <span>{post.mailAddress}</span>
+                <span>{post.password}</span>
+                <span>{post.role}</span>
+                <span>{post.expirationDate}</span>
+                <span>{post.lock}</span>
+                <span>{post.enabled}</span>
+                <span>{post.version}</span>
+                <span>{post.createdUser}</span>
+                <span>{post.createDatetime}</span>
+                <span>{post.lastModifiedUser}</span>
+                <span>{post.lastModifiedDatetime}</span>
+                
+            </li>
+            ))}
+        </ul>
+
 
         </div>
 

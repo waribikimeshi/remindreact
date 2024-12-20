@@ -1,5 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
+//TODO:cssインポート
+import styles from "../../page.module.css"
 
 export const metadata: Metadata = {
     //TODO:タイトル個別画面でmetadata定義
@@ -27,10 +29,13 @@ export interface Authentication {
 export default function Home() {
     return (
         <>
-            <div>http://localhost:3000/authentication/list</div>
+        <div className="container">
+            <div className={styles.sitetitle}>http://localhost:3000/authentication/list</div>
             <div>リスト</div>
             <div>app\authentication\list\page.tsx</div>
             <p><Link href="/">エントリポイントへ遷移</Link></p>
+
+        </div>
 
         </>
     )

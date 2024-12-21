@@ -1,6 +1,12 @@
+//複数のページで共有される。再レンダリングされない。
 import type { Metadata } from "next";
-//TODO:
+//TODO:googleフォントは環境に依存しない。商用利用可能なので採用。
 // import { Geist, Geist_Mono } from "next/font/google";
+import { Geist } from 'next/font/google'
+const geist = Geist({
+  subsets: ['latin'],
+})
+//TODO:グローバルはここに切ってるんだね
 import "./globals.css";
 
 //TODO:
@@ -37,7 +43,7 @@ export default function RootLayout({
       //TODO:reactのコメントは{}内//
       //<body className={`${geistSans.variable} ${geistMono.variable}`}>
       }
-      <body>
+      <body className={geist.className}>
         {children}
       </body>
     </html>

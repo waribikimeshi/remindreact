@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 //TODO:cssインポート
 import styles from "../../page.module.css"
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
     //TODO:タイトル個別画面でmetadata定義
@@ -26,6 +27,8 @@ export interface Authentication {
   }
   
 export default async function Page() {
+
+    //TODO:サーバ落ちてたらエラーになる。SPAじゃなしやな
     const data = await fetch('http://localhost:8080/v20241209/authentication/list');
     const posts = await data.json();
     return (
@@ -36,8 +39,11 @@ export default async function Page() {
             <div>リスト</div>
             <div>app\authentication\list\page.tsx</div>
             <p><Link href="/">エントリポイントへ遷移</Link></p>
+            <p><Link href="/authentication/crud">CRUDへ遷移</Link></p>
 
-        <ul>
+
+            <Suspense fallback={<div>Loading...</div>}>
+            <ul>
             {posts.map((post:Authentication) => (
             <li key={post.id}>
                 <span>{post.mailAddress}</span>
@@ -55,6 +61,7 @@ export default async function Page() {
             </li>
             ))}
         </ul>
+            </Suspense>
 
 
         </div>

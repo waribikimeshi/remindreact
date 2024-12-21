@@ -58,8 +58,9 @@ content-type: application/json
 
 POST http://localhost:8080/v20241209/authentication/post HTTP/1.1
 content-type: application/json
+
 {
-"mailAddress": "waribikimeshi@gmail.com",
+"mailAddress": "hihi@gmail.com",
 "password": "{bcrypt}$2a$10$BooaIiRno2t5XKmsroWHG.HC9QqIa8Z4BUahMLaI8vRj3Oo4Tfyx.",
 "role": "ROLE_PROVIDER_CONTRACT_2",
 "expirationDate": "9999-12-31",
@@ -88,6 +89,7 @@ app router ってのが最新になってる。
 １０ なんか<Link>より useRouter フックの方が高度に設定できるって
 １１ 画像は svg ってのがベクトルで定義されてて拡縮で劣化しないし、ファイルサイズ低。
 １２ google フォントは環境に依存しないらしい。商用利用も可能って
+１３ next.js はサーバコンポーネントらしい。サーバ負荷増えるのとなんか色々制約あるのでいいのか？
 
 vercel
 404 はデプロイを other⇒next.js にしてないのが原因
@@ -97,6 +99,7 @@ git
 tortise git 使っていたが、vscode のサイドバー３番目にあった。ファイルの＋ボタンでステージングしないといけない。エクスプローラ開かなくていいので使う。
 
 TODO
+spring security で post はトークンが必要 403h
 list 初期表示 レイアウト
 list 初期表示 ajax
 list 編集ボタンで CRUD 画面遷移。id 渡し
@@ -105,4 +108,10 @@ crud 初期表示 ajax
 crud 登録ボタン
 rest save のみでいいのでは
 crud 削除ボタン
+ナビゲーション
 css Tailwind っての使った方がいいんだろね。インストールから必要。bootstrap とかも使えるみたいだけど
+javascipt そういや promise ってあったな。なんだっけ？非同期的なものやった気が。
+useEffect 非推奨らしい
+json server ってのがモック使える
+server component react18 から app 配下は基本サーバコンポーネント。serveraction はシンプルに画面 submit
+クライアントコンポーネントはファイルの先頭行に記載。イベント処理など

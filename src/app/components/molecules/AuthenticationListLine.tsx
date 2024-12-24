@@ -5,7 +5,7 @@ interface IAuthenticationProps{
     authentication: IAuthentication;
 }
 
-const Authentication = ({authentication}:IAuthenticationProps) => {
+const AuthenticationListLine = ({authentication}:IAuthenticationProps) => {
   return (
             <li key={authentication.id}>
                 <span>{authentication.mailAddress}</span>
@@ -14,4 +14,4 @@ const Authentication = ({authentication}:IAuthenticationProps) => {
             </li>
 )
 }
-export default Authentication
+export default AuthenticationListLine

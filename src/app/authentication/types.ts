@@ -1,5 +1,5 @@
 //TODO:型。maketypesにrestのjson貼付けて作成した
-export interface Authentication {
+export interface IAuthentication {
     id: number;
     mailAddress: string;
     password: string;

@@ -1,19 +1,16 @@
-import { Authentication } from '@/app/authentication/types'
+import { IAuthentication } from '@/app/authentication/types'
 import React from 'react'
+import Authentication from '../molecules/Authentication';
 
-interface AuthenticationListProps{
-    authenticationList: Authentication[];
+interface IAuthenticationListProps{
+    authenticationList: IAuthentication[];
 }
 
-const AuthenticationList = ({authenticationList}:AuthenticationListProps) => {
+const AuthenticationList = ({authenticationList}:IAuthenticationListProps) => {
   return (
         <ul>
-            {authenticationList.map((authentication:Authentication) => (
-            <li key={authentication.id}>
-                <span>{authentication.mailAddress}</span>
-                <div><button>編集</button></div>
-                <div><button>削除</button></div>    
-            </li>
+            {authenticationList.map((authentication:IAuthentication) => (
+                <Authentication key={authentication.id} authentication={authentication} />
             ))}
         </ul>
 )

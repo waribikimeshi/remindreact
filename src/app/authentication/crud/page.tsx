@@ -1,6 +1,6 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { Authentication } from "../types";
+import { IAuthentication } from "../types";
 
 export default function Crud(){
 
@@ -8,7 +8,7 @@ export default function Crud(){
     const createAuthentication = async(formData:FormData) => {
         "use server";
         //console.log(formData);
-        const data:Authentication = {
+        const data:IAuthentication = {
             id : 0,
             mailAddress : formData.get("mailAddress")?.toString() ?? "",
             password : "{bcrypt}$2a$10$BooaIiRno2t5XKmsroWHG.HC9QqIa8Z4BUahMLaI8vRj3Oo4Tfyx.",

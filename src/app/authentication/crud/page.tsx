@@ -1,6 +1,6 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { Authentication } from "../list/page";
+import { Authentication } from "../types";
 
 export default function Crud(){
 

@@ -3,34 +3,19 @@ import Link from "next/link";
 //TODO:cssインポート
 import styles from "../../page.module.css"
 import { Suspense } from "react";
+import AuthenticationList from "@/app/components/templates/AuthenticationList";
+import { getAllList } from "../api";
 
 export const metadata: Metadata = {
     //TODO:タイトル個別画面でmetadata定義
-    title: "authentication/list | remindreact",  
+    title: "list | remindreact",  
   };
-  
-
-//TODO:型。maketypesにrestのjson貼付けて作成した
-export interface Authentication {
-    id: number;
-    mailAddress: string;
-    password: string;
-    role: string;
-    expirationDate: string;
-    lock: boolean;
-    enabled: boolean;
-    version: number;
-    createdUser: string;
-    createDatetime: string;
-    lastModifiedUser: string;
-    lastModifiedDatetime: string;
-  }
   
 export default async function Page() {
 
-    //TODO:サーバ落ちてたらエラーになる。SPAじゃなしやな
-    const data = await fetch('http://localhost:8080/v20241209/authentication/list');
-    const posts = await data.json();
+    //restから取得
+    const authenticationList = await getAllList();
+    
     return (
     
         <>
@@ -43,24 +28,7 @@ export default async function Page() {
 
 
             <Suspense fallback={<div>Loading...</div>}>
-            <ul>
-            {posts.map((post:Authentication) => (
-            <li key={post.id}>
-                <span>{post.mailAddress}</span>
-                <span>{post.password}</span>
-                <span>{post.role}</span>
-                <span>{post.expirationDate}</span>
-                <span>{post.lock}</span>
-                <span>{post.enabled}</span>
-                <span>{post.version}</span>
-                <span>{post.createdUser}</span>
-                <span>{post.createDatetime}</span>
-                <span>{post.lastModifiedUser}</span>
-                <span>{post.lastModifiedDatetime}</span>
-                
-            </li>
-            ))}
-        </ul>
+            <AuthenticationList authenticationList={authenticationList}/>
             </Suspense>
 
 

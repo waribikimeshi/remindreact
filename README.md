@@ -89,7 +89,7 @@ app router ってのが最新になってる。
 １０ なんか<Link>より useRouter フックの方が高度に設定できるって
 １１ 画像は svg ってのがベクトルで定義されてて拡縮で劣化しないし、ファイルサイズ低。
 １２ google フォントは環境に依存しないらしい。商用利用も可能って
-１３ next.js はサーバコンポーネントらしい。サーバ負荷増えるのとなんか色々制約あるのでいいのか？
+１３ next.js はサーバコンポーネントらしい。サーバ負荷増えるのとなんか色々制約あるのでいいのか？クライアントの環境には影響しないがクライアントコンポーネントにするにはファイル先頭に記載必要。
 
 vercel
 404 はデプロイを other⇒next.js にしてないのが原因
@@ -126,3 +126,11 @@ organisms(有機物)atoms と molecule を組み合わせた再利用できな�
 templates(テンプレート)ページ構造とかレイアウト構成とか。next.js は layout.tsx あるけど。これが実質の react ページ
 pages(ページ)template に実データ反映されたもの。next.js の page.tsx なので components には作らない。
 個別画面は app 直下に画面フォルダ/[id]
+
+ツール
+VsCode の拡張機能 ES7 React/Redux/GraphQL/React-Native snippets 「rafce」でひな形ソース展開してくれる
+
+react
+１ まず表示したいページにどういう部品に分割するかの単位でタグ。検索エリア＋リスト＋新規追加ボタン＋行編集＋行削除＋フッタ保存
+２ components/templates に１の単位を頭大文字でファイル作る
+３ type は個別直下に types.ts で定義

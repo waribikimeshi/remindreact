@@ -115,3 +115,14 @@ useEffect 非推奨らしい
 json server ってのがモック使える
 server component react18 から app 配下は基本サーバコンポーネント。serveraction はシンプルに画面 submit
 クライアントコンポーネントはファイルの先頭行に記載。イベント処理など
+
+プロジェクトルール
+fetche は page.tsx に書く。どこに書いてるか管理できなくなるらしい
+レンダリングは components に書く。ルーティング対象外なので page.tsx の作成は禁止
+components は atomic デザインパターンを採用する。
+atoms(原子)最小。ボタンとか
+molecules(分子)atoms を複数組み合わせた再利用可能な単位。検索テキスト＋検索ボタンとか
+organisms(有機物)atoms と molecule を組み合わせた再利用できなくてもいい単位。ロゴ＋検索エリアとか商品画像＋商品名＋値段とか
+templates(テンプレート)ページ構造とかレイアウト構成とか。next.js は layout.tsx あるけど。これが実質の react ページ
+pages(ページ)template に実データ反映されたもの。next.js の page.tsx なので components には作らない。
+個別画面は app 直下に画面フォルダ/[id]

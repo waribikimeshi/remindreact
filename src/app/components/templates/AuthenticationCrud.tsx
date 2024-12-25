@@ -8,7 +8,17 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 const AuthenticationCrud = () => {
   const { register, handleSubmit, formState:{errors}, watch } = useForm<IAuthentication>();
 
-  const onSubmit: SubmitHandler<IAuthentication> = data => console.log(data);
+  const onSubmit: SubmitHandler<IAuthentication> = authentication => {
+    console.log(authentication);
+
+    const newAuthentication = create(authentication);
+
+    //awaitとかいるのか
+    //再描画
+
+    console.log(newAuthentication);
+
+  };
 
 
   return (
@@ -28,7 +38,7 @@ const AuthenticationCrud = () => {
         <input  
           {...register("mailAddress",{required:{value:true,message:"必須です"}})}
           type="text"
-          defaultValue={0}
+          defaultValue={"aaa@gmail.com"}
          />
          {errors.mailAddress?.message}
       </div>
@@ -37,7 +47,7 @@ const AuthenticationCrud = () => {
         <input  
           {...register("password",{required:{value:true,message:"必須です"}})}
           type="text"
-          defaultValue={0}
+          defaultValue={"{bcrypt}$2a$10$BooaIiRno2t5XKmsroWHG.HC9QqIa8Z4BUahMLaI8vRj3Oo4Tfyx."}
          />
          {errors.password?.message}
       </div>
@@ -46,7 +56,7 @@ const AuthenticationCrud = () => {
         <input  
           {...register("role",{required:{value:true,message:"必須です"}})}
           type="text"
-          defaultValue={0}
+          defaultValue={"ROLE_PROVIDER_CONTRACT_2"}
          />
          {errors.role?.message}
       </div>
@@ -55,7 +65,7 @@ const AuthenticationCrud = () => {
         <input  
           {...register("expirationDate",{required:{value:true,message:"必須です"}})}
           type="text"
-          defaultValue={0}
+          defaultValue={"9999-12-31"}
          />
          {errors.expirationDate?.message}
       </div>
@@ -64,7 +74,7 @@ const AuthenticationCrud = () => {
         <input  
           {...register("lock",{required:{value:true,message:"必須です"}})}
           type="text"
-          defaultValue={0}
+          defaultValue={"false"}
          />
          {errors.lock?.message}
       </div>
@@ -73,7 +83,7 @@ const AuthenticationCrud = () => {
         <input  
           {...register("enabled",{required:{value:true,message:"必須です"}})}
           type="text"
-          defaultValue={0}
+          defaultValue={"true"}
          />
          {errors.enabled?.message}
       </div>
@@ -82,7 +92,7 @@ const AuthenticationCrud = () => {
         <input  
           {...register("version",{required:{value:true,message:"必須です"}})}
           type="text"
-          defaultValue={0}
+          defaultValue={"1"}
          />
          {errors.version?.message}
       </div>
@@ -91,7 +101,7 @@ const AuthenticationCrud = () => {
         <input  
           {...register("createdUser",{required:{value:true,message:"必須です"}})}
           type="text"
-          defaultValue={0}
+          defaultValue={"anonymousUser"}
          />
          {errors.createdUser?.message}
       </div>
@@ -100,7 +110,7 @@ const AuthenticationCrud = () => {
         <input  
           {...register("createDatetime",{required:{value:true,message:"必須です"}})}
           type="text"
-          defaultValue={0}
+          defaultValue={"2020-08-15T02:58:00.000+00:00"}
          />
          {errors.createDatetime?.message}
       </div>
@@ -109,7 +119,7 @@ const AuthenticationCrud = () => {
         <input  
           {...register("lastModifiedUser",{required:{value:true,message:"必須です"}})}
           type="text"
-          defaultValue={0}
+          defaultValue={"waribikimeshi@gmail.com"}
          />
          {errors.lastModifiedUser?.message}
       </div>
@@ -118,7 +128,7 @@ const AuthenticationCrud = () => {
         <input  
           {...register("lastModifiedDatetime",{required:{value:true,message:"必須です"}})}
           type="text"
-          defaultValue={0}
+          defaultValue={"2021-01-25T03:39:44.000+00:00"}
          />
          {errors.lastModifiedDatetime?.message}
       </div>

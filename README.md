@@ -136,3 +136,4 @@ react
 ３ type は個別直下に types.ts で定義
 ４ api.ts に rest 呼び出し
 ５ form は react hook form
+６ "use client" 使わざる得ないが、SPA から rest で port 違うので CORS 許可しないとアクセスできない。restcontroller に許可

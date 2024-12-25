@@ -134,3 +134,5 @@ react
 １ まず表示したいページにどういう部品に分割するかの単位でタグ。検索エリア＋リスト＋新規追加ボタン＋行編集＋行削除＋フッタ保存
 ２ components/templates に１の単位を頭大文字でファイル作る
 ３ type は個別直下に types.ts で定義
+４ api.ts に rest 呼び出し
+５ form は react hook form

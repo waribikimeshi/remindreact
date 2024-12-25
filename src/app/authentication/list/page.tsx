@@ -4,7 +4,7 @@ import Link from "next/link";
 import styles from "../../page.module.css"
 import { Suspense } from "react";
 import AuthenticationList from "@/app/components/templates/AuthenticationList";
-import { getAllList } from "../api";
+import { readAll } from "../api";
 
 export const metadata: Metadata = {
     //TODO:タイトル個別画面でmetadata定義
@@ -14,8 +14,8 @@ export const metadata: Metadata = {
 export default async function Page() {
 
     //restから取得
-    const authenticationList = await getAllList();
-    
+    const authenticationList = await readAll();
+
     return (
     
         <>

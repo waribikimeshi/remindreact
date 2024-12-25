@@ -4,7 +4,7 @@ import Link from "next/link";
 import styles from "../../page.module.css"
 import { Suspense } from "react";
 import { IAuthentication } from "../types";
-import { getAllList } from "../api";
+import { readAll } from "../api";
 import AuthenticationList from "@/app/components/templates/AuthenticationList";
 
 export const metadata: Metadata = {

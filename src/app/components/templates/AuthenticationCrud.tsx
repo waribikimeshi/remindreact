@@ -2,6 +2,7 @@
 
 import { create } from '@/app/authentication/api';
 import { IAuthentication } from '@/app/authentication/types';
+import Link from 'next/link';
 import React, { FormEvent } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form';
 
@@ -134,6 +135,10 @@ const AuthenticationCrud = () => {
       </div>
       <div>
         <button type="submit">登録</button>
+        <Link href="/authentication/list" passHref>
+          <button>戻る</button>
+        </Link>
+
       </div>
       
     </form>

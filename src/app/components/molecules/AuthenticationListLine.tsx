@@ -9,6 +9,7 @@ const AuthenticationListLine = ({authentication}:IAuthenticationProps) => {
   return (
             <li key={authentication.id}>
                 <span>{authentication.mailAddress}</span>
+                <div><button>参照</button></div>
                 <div><button>編集</button></div>
                 <div><button>削除</button></div>    
             </li>

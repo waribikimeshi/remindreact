@@ -19,6 +19,9 @@ export const create = async (authentication:IAuthentication): Promise<IAuthentic
         body: JSON.stringify(authentication),
         }
     );
+
+    //TODO:エラー処理
+    
     const newAuthentication = responce.json();
 
     return newAuthentication;

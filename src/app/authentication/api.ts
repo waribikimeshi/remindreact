@@ -2,16 +2,16 @@ import { IAuthentication } from "./types";
 
 //TODO:サーバ落ちてたらエラーになる。SPAじゃなしやな
 export const readAll = async (): Promise<IAuthentication[]> => {
-    const responce = await fetch('http://localhost:8080/v20241209/authentication/list',{
+    const response = await fetch(`http://localhost:8080/v20241209/authentication/list`,{
     cache:"no-store", //SSRサーバサイドレンダリング
     });
-    const authenticationList = responce.json();
+    const authenticationList = response.json();
 
     return authenticationList;
 }
 
 export const create = async (authentication:IAuthentication): Promise<IAuthentication[]> => {
-    const responce = await fetch('http://localhost:8080/v20241209/authentication/post',{
+    const response = await fetch(`http://localhost:8080/v20241209/authentication/post`,{
         method: "POST",
         headers:{
             "content-type" : "application/json",
@@ -22,7 +22,15 @@ export const create = async (authentication:IAuthentication): Promise<IAuthentic
 
     //TODO:エラー処理
     
-    const newAuthentication = responce.json();
+    const newAuthentication = response.json();
 
     return newAuthentication;
+}
+
+export const read = async (id:string): Promise<IAuthentication> => {
+    const response = await fetch(`http://localhost:8080/v20241209/authentication/get/${id}`);
+    
+    const authentication = response.json();
+
+    return authentication;
 }

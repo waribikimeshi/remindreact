@@ -137,5 +137,6 @@ react
 ４ api.ts に rest 呼び出し
 ５ form は react hook form
 ６ "use client" 使わざる得ないが、SPA から rest で port 違うので CORS 許可しないとアクセスできない。restcontroller に許可
+７ [id]の中でもフォルダ分けてそれぞれ page を分ける文化っぽい
 
 とりあえずソースがバラケルのが気になるな。どこに何書いてるか把握できなくなりそう

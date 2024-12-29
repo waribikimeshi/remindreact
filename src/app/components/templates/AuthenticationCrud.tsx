@@ -4,12 +4,22 @@ import { create } from '@/app/authentication/api';
 import { IAuthentication } from '@/app/authentication/types';
 import Link from 'next/link';
 import React, { FormEvent } from 'react'
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { useForm, SubmitHandler } from 'react-hook-form';
+
+interface IAuthenticationProps{
+  //postはnull許可
+  authentication?: IAuthentication;
+}
 
 //post
-const AuthenticationCrud = () => {
-  const { register, handleSubmit, formState:{errors}, watch } = useForm<IAuthentication>();
+const AuthenticationCrud = ({authentication}:IAuthenticationProps) => {
+  const { register, reset, handleSubmit, formState:{errors}, watch } = useForm<IAuthentication>({
+    defaultValues: authentication
+  });
 
+  //if(authentication === undefined){  }
+
+  //イベント
   const onSubmit: SubmitHandler<IAuthentication> = authentication => {
     console.log(authentication);
 
@@ -21,13 +31,13 @@ const AuthenticationCrud = () => {
     console.log(newAuthentication);
 
   };
-
   
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div>
         <label htmlFor="id">id</label>
+        {/*...registerは name ref onChange onBlur を展開*/}
         <input  
           {...register("id",{min:0,required:{value:true,message:"必須です"}})}
           type="number"

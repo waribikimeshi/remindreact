@@ -10,7 +10,7 @@ import AuthenticationCrud from "@/app/components/templates/AuthenticationCrud";
 
 export const metadata: Metadata = {
     //TODO:タイトル個別画面でmetadata定義
-    title: "authentication/list | remindreact",  
+    title: "authentication/read | remindreact",  
   };
   
 
@@ -22,7 +22,7 @@ export default async function Page({params}:{params:{id:string}}){
 
     return(
         <>
-            <AuthenticationCrud authentication={authentication}/>
+            <AuthenticationCrud defaultValues={authentication} isReadOnly={true}/>
         </>
     );
 }  

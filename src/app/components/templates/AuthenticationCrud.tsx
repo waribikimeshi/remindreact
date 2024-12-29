@@ -6,35 +6,42 @@ import Link from 'next/link';
 import React, { FormEvent } from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form';
 
-interface IAuthenticationProps{
-  //postはnull許可
-  authentication?: IAuthentication;
+interface IAuthenticationCrudProps {
+  onSubmit?: SubmitHandler<IAuthentication>;
+  defaultValues?: IAuthentication; // 編集用のデフォルト値（更新時など）postはundefined許可
+  isReadOnly?: boolean; //参照のみか
 }
 
+
 //post
-const AuthenticationCrud = ({authentication}:IAuthenticationProps) => {
-  const { register, reset, handleSubmit, formState:{errors}, watch } = useForm<IAuthentication>({
-    defaultValues: authentication
-  });
+const AuthenticationCrud = ({ onSubmit, defaultValues ,isReadOnly = false}: IAuthenticationCrudProps) => {
+  const {  register, reset, handleSubmit, formState: { errors }, watch  } = useForm<IAuthentication>({ defaultValues });
 
   //if(authentication === undefined){  }
 
-  //イベント
-  const onSubmit: SubmitHandler<IAuthentication> = authentication => {
-    console.log(authentication);
+  //イベントは各画面から
+  // const onSubmit: SubmitHandler<IAuthentication> = authentication => {
+  //   console.log(authentication);
 
-    const newAuthentication = create(authentication);
+  //   const newAuthentication = create(authentication);
 
-    //awaitとかいるのか
-    //再描画
+  //   //awaitとかいるのか
+  //   //再描画
 
-    console.log(newAuthentication);
+  //   console.log(newAuthentication);
 
+  // };
+
+  //なんか定義しないとonsubmitが渡された時だけform実行の制御ができないっぽい
+  const formSubmit = (data: IAuthentication) => {
+    if (onSubmit) {
+      onSubmit(data);
+    }
   };
-  
+
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(formSubmit)}>
       <div>
         <label htmlFor="id">id</label>
         {/*...registerは name ref onChange onBlur を展開*/}
@@ -43,6 +50,7 @@ const AuthenticationCrud = ({authentication}:IAuthenticationProps) => {
           type="number"
           defaultValue={0}
           min={0}
+          readOnly={isReadOnly} 
          />
          {errors.id?.message}
       </div>
@@ -52,6 +60,7 @@ const AuthenticationCrud = ({authentication}:IAuthenticationProps) => {
           {...register("mailAddress",{required:{value:true,message:"必須です"}})}
           type="text"
           defaultValue={"aaa@gmail.com"}
+          readOnly={isReadOnly} 
          />
          {errors.mailAddress?.message}
       </div>
@@ -61,6 +70,7 @@ const AuthenticationCrud = ({authentication}:IAuthenticationProps) => {
           {...register("password",{required:{value:true,message:"必須です"}})}
           type="text"
           defaultValue={"{bcrypt}$2a$10$BooaIiRno2t5XKmsroWHG.HC9QqIa8Z4BUahMLaI8vRj3Oo4Tfyx."}
+          readOnly={isReadOnly} 
          />
          {errors.password?.message}
       </div>
@@ -70,6 +80,7 @@ const AuthenticationCrud = ({authentication}:IAuthenticationProps) => {
           {...register("role",{required:{value:true,message:"必須です"}})}
           type="text"
           defaultValue={"ROLE_PROVIDER_CONTRACT_2"}
+          readOnly={isReadOnly} 
          />
          {errors.role?.message}
       </div>
@@ -79,6 +90,7 @@ const AuthenticationCrud = ({authentication}:IAuthenticationProps) => {
           {...register("expirationDate",{required:{value:true,message:"必須です"}})}
           type="text"
           defaultValue={"9999-12-31"}
+          readOnly={isReadOnly} 
          />
          {errors.expirationDate?.message}
       </div>
@@ -88,6 +100,7 @@ const AuthenticationCrud = ({authentication}:IAuthenticationProps) => {
           {...register("lock",{required:{value:true,message:"必須です"}})}
           type="text"
           defaultValue={"false"}
+          readOnly={isReadOnly} 
          />
          {errors.lock?.message}
       </div>
@@ -97,6 +110,7 @@ const AuthenticationCrud = ({authentication}:IAuthenticationProps) => {
           {...register("enabled",{required:{value:true,message:"必須です"}})}
           type="text"
           defaultValue={"true"}
+          readOnly={isReadOnly} 
          />
          {errors.enabled?.message}
       </div>
@@ -106,6 +120,7 @@ const AuthenticationCrud = ({authentication}:IAuthenticationProps) => {
           {...register("version",{required:{value:true,message:"必須です"}})}
           type="text"
           defaultValue={"1"}
+          readOnly={isReadOnly} 
          />
          {errors.version?.message}
       </div>
@@ -115,6 +130,7 @@ const AuthenticationCrud = ({authentication}:IAuthenticationProps) => {
           {...register("createdUser",{required:{value:true,message:"必須です"}})}
           type="text"
           defaultValue={"anonymousUser"}
+          readOnly={isReadOnly} 
          />
          {errors.createdUser?.message}
       </div>
@@ -124,6 +140,7 @@ const AuthenticationCrud = ({authentication}:IAuthenticationProps) => {
           {...register("createDatetime",{required:{value:true,message:"必須です"}})}
           type="text"
           defaultValue={"2020-08-15T02:58:00.000+00:00"}
+          readOnly={isReadOnly} 
          />
          {errors.createDatetime?.message}
       </div>
@@ -133,6 +150,7 @@ const AuthenticationCrud = ({authentication}:IAuthenticationProps) => {
           {...register("lastModifiedUser",{required:{value:true,message:"必須です"}})}
           type="text"
           defaultValue={"waribikimeshi@gmail.com"}
+          readOnly={isReadOnly} 
          />
          {errors.lastModifiedUser?.message}
       </div>
@@ -142,11 +160,12 @@ const AuthenticationCrud = ({authentication}:IAuthenticationProps) => {
           {...register("lastModifiedDatetime",{required:{value:true,message:"必須です"}})}
           type="text"
           defaultValue={"2021-01-25T03:39:44.000+00:00"}
+          readOnly={isReadOnly} 
          />
          {errors.lastModifiedDatetime?.message}
       </div>
       <div>
-        <button type="submit">登録</button>
+      {!isReadOnly && <button type="submit">実行</button>}
         <Link href="/authentication/list" passHref>
           <button>戻る</button>
         </Link>

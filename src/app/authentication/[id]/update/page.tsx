@@ -20,9 +20,21 @@ export default async function Page({params}:{params:{id:string}}){
     //restから取得
     const authentication = await read(params.id);
 
+      const handleSubmit = async (authentication:IAuthentication) => {
+        console.log(authentication);
+    
+        // const newAuthentication = await create(authentication);
+    
+        //awaitとかいるのか
+        //再描画
+    
+        // console.log(newAuthentication);
+    
+      };
+    
     return(
         <>
-            <AuthenticationCrud authentication={authentication}/>
+            <AuthenticationCrud defaultValues={authentication} onSubmit={handleSubmit}/>
         </>
     );
 }  

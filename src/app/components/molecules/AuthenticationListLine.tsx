@@ -2,11 +2,11 @@ import { IAuthentication } from '@/app/authentication/types'
 import Link from 'next/link';
 import React from 'react'
 
-interface IAuthenticationProps{
+interface IAuthenticationListLineProps{
     authentication: IAuthentication;
 }
 
-const AuthenticationListLine = ({authentication}:IAuthenticationProps) => {
+const AuthenticationListLine = ({authentication}:IAuthenticationListLineProps) => {
   return (
             <li key={authentication.id}>
                 <span>{authentication.mailAddress}</span>

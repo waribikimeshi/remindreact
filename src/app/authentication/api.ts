@@ -5,7 +5,7 @@ export const readAll = async (): Promise<IAuthentication[]> => {
     const response = await fetch(`http://localhost:8080/v20241209/authentication/list`,{
     cache:"no-store", //SSRサーバサイドレンダリング
     });
-    const authenticationList = response.json();
+    const authenticationList = await response.json();
 
     return authenticationList;
 }
@@ -22,7 +22,7 @@ export const create = async (authentication:IAuthentication): Promise<IAuthentic
 
     //TODO:エラー処理
     
-    const newAuthentication = response.json();
+    const newAuthentication = await response.json();
 
     return newAuthentication;
 }
@@ -30,7 +30,7 @@ export const create = async (authentication:IAuthentication): Promise<IAuthentic
 export const read = async (id:string): Promise<IAuthentication> => {
     const response = await fetch(`http://localhost:8080/v20241209/authentication/get/${id}`);
     
-    const authentication = response.json();
+    const authentication = await response.json();
 
     return authentication;
 }

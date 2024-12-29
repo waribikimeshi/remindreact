@@ -10,7 +10,7 @@ export const readAll = async (): Promise<IAuthentication[]> => {
     return authenticationList;
 }
 
-export const create = async (authentication:IAuthentication): Promise<IAuthentication[]> => {
+export const create = async (authentication:IAuthentication): Promise<IAuthentication> => {
     const response = await fetch(`http://localhost:8080/v20241209/authentication/post`,{
         method: "POST",
         headers:{
@@ -27,10 +27,13 @@ export const create = async (authentication:IAuthentication): Promise<IAuthentic
     return newAuthentication;
 }
 
+//なんかnext.js使えるのかね。。。
 export const read = async (id:string): Promise<IAuthentication> => {
-    const response = await fetch(`http://localhost:8080/v20241209/authentication/get/${id}`);
+    const response = await fetch(`http://localhost:8080/v20241209/authentication/get/${id}`,{
+        cache:"no-store", //SSRサーバサイドレンダリング
+    });
     
-    const authentication = await response.json();
+    const authentication = await response.json() ;
 
     return authentication;
 }

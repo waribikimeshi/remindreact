@@ -6,10 +6,12 @@ import { Suspense } from "react";
 import AuthenticationList from "@/app/components/templates/AuthenticationList";
 import { readAll } from "../api";
 
+//getはサーバコンポーネントがいいらしい
 export const metadata: Metadata = {
     //TODO:タイトル個別画面でmetadata定義
     title: "list | remindreact",  
   };
+
   
 export default async function Page() {
 

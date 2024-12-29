@@ -39,7 +39,6 @@ const AuthenticationCrud = ({ onSubmit, defaultValues ,isReadOnly = false}: IAut
     }
   };
 
-
   return (
     <form onSubmit={handleSubmit(formSubmit)}>
       <div>
@@ -48,7 +47,7 @@ const AuthenticationCrud = ({ onSubmit, defaultValues ,isReadOnly = false}: IAut
         <input  
           {...register("id",{min:0,required:{value:true,message:"必須です"}})}
           type="number"
-          defaultValue={0}
+          // defaultValue={0}
           min={0}
           readOnly={isReadOnly} 
          />
@@ -59,7 +58,7 @@ const AuthenticationCrud = ({ onSubmit, defaultValues ,isReadOnly = false}: IAut
         <input  
           {...register("mailAddress",{required:{value:true,message:"必須です"}})}
           type="text"
-          defaultValue={"aaa@gmail.com"}
+          // defaultValue={"aaa@gmail.com"}
           readOnly={isReadOnly} 
          />
          {errors.mailAddress?.message}
@@ -69,7 +68,7 @@ const AuthenticationCrud = ({ onSubmit, defaultValues ,isReadOnly = false}: IAut
         <input  
           {...register("password",{required:{value:true,message:"必須です"}})}
           type="text"
-          defaultValue={"{bcrypt}$2a$10$BooaIiRno2t5XKmsroWHG.HC9QqIa8Z4BUahMLaI8vRj3Oo4Tfyx."}
+          // defaultValue={"{bcrypt}$2a$10$BooaIiRno2t5XKmsroWHG.HC9QqIa8Z4BUahMLaI8vRj3Oo4Tfyx."}
           readOnly={isReadOnly} 
          />
          {errors.password?.message}
@@ -79,7 +78,7 @@ const AuthenticationCrud = ({ onSubmit, defaultValues ,isReadOnly = false}: IAut
         <input  
           {...register("role",{required:{value:true,message:"必須です"}})}
           type="text"
-          defaultValue={"ROLE_PROVIDER_CONTRACT_2"}
+          // defaultValue={"ROLE_PROVIDER_CONTRACT_2"}
           readOnly={isReadOnly} 
          />
          {errors.role?.message}
@@ -89,7 +88,7 @@ const AuthenticationCrud = ({ onSubmit, defaultValues ,isReadOnly = false}: IAut
         <input  
           {...register("expirationDate",{required:{value:true,message:"必須です"}})}
           type="text"
-          defaultValue={"9999-12-31"}
+          // defaultValue={"9999-12-31"}
           readOnly={isReadOnly} 
          />
          {errors.expirationDate?.message}
@@ -99,7 +98,7 @@ const AuthenticationCrud = ({ onSubmit, defaultValues ,isReadOnly = false}: IAut
         <input  
           {...register("lock",{required:{value:true,message:"必須です"}})}
           type="text"
-          defaultValue={"false"}
+          // defaultValue={"false"}
           readOnly={isReadOnly} 
          />
          {errors.lock?.message}
@@ -109,7 +108,7 @@ const AuthenticationCrud = ({ onSubmit, defaultValues ,isReadOnly = false}: IAut
         <input  
           {...register("enabled",{required:{value:true,message:"必須です"}})}
           type="text"
-          defaultValue={"true"}
+          // defaultValue={"true"}
           readOnly={isReadOnly} 
          />
          {errors.enabled?.message}
@@ -119,7 +118,7 @@ const AuthenticationCrud = ({ onSubmit, defaultValues ,isReadOnly = false}: IAut
         <input  
           {...register("version",{required:{value:true,message:"必須です"}})}
           type="text"
-          defaultValue={"1"}
+          // defaultValue={"1"}
           readOnly={isReadOnly} 
          />
          {errors.version?.message}
@@ -129,7 +128,7 @@ const AuthenticationCrud = ({ onSubmit, defaultValues ,isReadOnly = false}: IAut
         <input  
           {...register("createdUser",{required:{value:true,message:"必須です"}})}
           type="text"
-          defaultValue={"anonymousUser"}
+          // defaultValue={"anonymousUser"}
           readOnly={isReadOnly} 
          />
          {errors.createdUser?.message}
@@ -139,7 +138,7 @@ const AuthenticationCrud = ({ onSubmit, defaultValues ,isReadOnly = false}: IAut
         <input  
           {...register("createDatetime",{required:{value:true,message:"必須です"}})}
           type="text"
-          defaultValue={"2020-08-15T02:58:00.000+00:00"}
+          // defaultValue={"2020-08-15T02:58:00.000+00:00"}
           readOnly={isReadOnly} 
          />
          {errors.createDatetime?.message}
@@ -149,7 +148,7 @@ const AuthenticationCrud = ({ onSubmit, defaultValues ,isReadOnly = false}: IAut
         <input  
           {...register("lastModifiedUser",{required:{value:true,message:"必須です"}})}
           type="text"
-          defaultValue={"waribikimeshi@gmail.com"}
+          // defaultValue={"waribikimeshi@gmail.com"}
           readOnly={isReadOnly} 
          />
          {errors.lastModifiedUser?.message}
@@ -159,7 +158,7 @@ const AuthenticationCrud = ({ onSubmit, defaultValues ,isReadOnly = false}: IAut
         <input  
           {...register("lastModifiedDatetime",{required:{value:true,message:"必須です"}})}
           type="text"
-          defaultValue={"2021-01-25T03:39:44.000+00:00"}
+          // defaultValue={"2021-01-25T03:39:44.000+00:00"}
           readOnly={isReadOnly} 
          />
          {errors.lastModifiedDatetime?.message}

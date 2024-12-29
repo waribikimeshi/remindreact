@@ -6,7 +6,7 @@ import React from 'react'
 const AuthenticationAdd = () => {
   return (
     <div>
-      <Link href="/authentication/crud"　passHref>
+      <Link href="/authentication/create"　passHref>
         <button>新規</button>
       </Link>
 

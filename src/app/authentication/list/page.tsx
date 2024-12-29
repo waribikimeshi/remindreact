@@ -24,7 +24,7 @@ export default async function Page() {
             <div>リスト</div>
             <div>app\authentication\list\page.tsx</div>
             <p><Link href="/">エントリポイントへ遷移</Link></p>
-            <p><Link href="/authentication/crud">CRUDへ遷移</Link></p>
+            <p><Link href="/authentication/create">createへ遷移</Link></p>
 
 
             <Suspense fallback={<div>Loading...</div>}>

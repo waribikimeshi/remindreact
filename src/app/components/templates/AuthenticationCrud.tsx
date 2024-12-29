@@ -6,6 +6,7 @@ import Link from 'next/link';
 import React, { FormEvent } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form';
 
+//post
 const AuthenticationCrud = () => {
   const { register, handleSubmit, formState:{errors}, watch } = useForm<IAuthentication>();
 
@@ -21,6 +22,7 @@ const AuthenticationCrud = () => {
 
   };
 
+  
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

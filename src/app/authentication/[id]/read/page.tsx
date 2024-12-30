@@ -29,13 +29,17 @@ export default function Page(){
     //レンダリングの後に中身が実行される。第二引数は実行するタイミングを指定。空の配列はリロード時のみ実行。変数指定すると変化した際に実行。
     useEffect(() => {
         console.log("副作用");
+
+        //データ取得関数定義
         const fetchData = async () => {
             const result = await read(params.id as string);
             setAuthentication(result);
             console.log(result);
         };
-    
+
+        //データ取得の実行
         fetchData();
+
       }, [params.id]);  // URL直変更でもデータを取得。
 
     // //Next.jsのバージョンが15になってから、paramsの処理が非同期（async）になった
@@ -55,10 +59,10 @@ export default function Page(){
             <Head>
                 <title>read | remindreact</title>
             </Head>        
-            <Suspense fallback={<div>Loading...</div>}>
+            {/* <Suspense fallback={<div>Loading...</div>}> */}
             <AuthenticationCrud defaultValues={authentication} isReadOnly={true}/>
             {/* <AuthenticationCrud defaultValues={authentication} /> */}
-            </Suspense>
+            {/* </Suspense> */}
 
         </>
     );

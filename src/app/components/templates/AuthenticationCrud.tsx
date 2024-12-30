@@ -4,7 +4,7 @@
 import { create } from '@/app/authentication/api';
 import { IAuthentication } from '@/app/authentication/types';
 import Link from 'next/link';
-import React, { FormEvent } from 'react'
+import React, { FormEvent, useEffect } from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form';
 
 interface IAuthenticationCrudProps {
@@ -34,6 +34,12 @@ const AuthenticationCrud = ({ onSubmit, defaultValues ,isReadOnly = false}: IAut
   //   console.log(newAuthentication);
 
   // };
+  // defaultValuesが変更されるたびにフォームをリセット。再描画。
+  useEffect(() => {
+    if (defaultValues) {
+      reset(defaultValues);
+    }
+  }, [defaultValues, reset]);
 
   //なんか定義しないとonsubmitが渡された時だけform実行の制御ができないっぽい
   const formSubmit = (data: IAuthentication) => {
@@ -178,7 +184,7 @@ const AuthenticationCrud = ({ onSubmit, defaultValues ,isReadOnly = false}: IAut
           {errors.lastModifiedDatetime?.message}
         </div>
         <div>
-        {!isReadOnly && <button type="submit">実行</button>}
+          {!isReadOnly && <button type="submit">実行</button>}
           <Link href="/authentication/list" passHref>
             <button>戻る</button>
           </Link>

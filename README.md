@@ -141,5 +141,14 @@ react
 ６ "use client" 使わざる得ないが、SPA から rest で port 違うので CORS 許可しないとアクセスできない。restcontroller に許可
 ７ [id]の中でもフォルダ分けてそれぞれ page を分ける文化っぽい
 ８ onsubmit をどうすればいいかハマったが、react の考え方は変化するものは外部から引数で渡す、変化しないものは自分で持つ観点みたいだね。状態保持は除いて。
+９　"use client"は親で定義してたら部品もクライアントになる
+
+react hook form
+register:フォームから入力された値の state 管理、バリデーション処理
+watch:フォームの値変更の監視
+handleSubmit:フォームを submit した時の処理をかけます。handleSubmit()は引数を二つ受け取ります。引数 1 はバリデーション処理が OK の場合の関数、引数 2 はバリデーション処理が NG の場合に呼ばれる関数が入ります。
+formState:フォームの状態を object で管理。formState: { errors, isDirty, isSubmitting, touchedFields, submitCount }
+Props:デフォルト onSubmit。mode とかカスタマイズできる。
+checkbox の必須チェックは true 以外エラーになる。値が入ってるって意味じゃない。false でハマった。
 
 とりあえずソースがバラケルのが気になるな。どこに何書いてるか把握できなくなりそう

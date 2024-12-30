@@ -24,7 +24,7 @@ export default function Page(){
     role: "ROLE_PROVIDER_CONTRACT_2",
     expirationDate: "9999-12-31",
     lock: false,
-    enabled: false,
+    enabled: true,
     version: 0,
     createdUser: "anonymousUser",
     createDatetime: "2020-08-15T02:58:00.000+00:00",

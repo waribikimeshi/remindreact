@@ -8,21 +8,23 @@ interface IAuthenticationListLineProps{
 
 const AuthenticationListLine = ({authentication}:IAuthenticationListLineProps) => {
   return (
-            <li key={authentication.id}>
-                <span>{authentication.mailAddress}</span>
+    <>
+        <li key={authentication.id}>
+            <span>{authentication.mailAddress}</span>
 
-                <Link href={`/authentication/${authentication.id}/read`}　passHref>
-                    <button>参照</button>
-                </Link>
+            <Link href={`/authentication/${authentication.id}/read`}　passHref>
+                <button>参照</button>
+            </Link>
 
-                <Link href={`/authentication/${authentication.id}/update`}　passHref>
-                    <button>更新</button>
-                </Link>
+            <Link href={`/authentication/${authentication.id}/update`}　passHref>
+                <button>更新</button>
+            </Link>
 
-                <Link href={`/authentication/${authentication.id}/delete`}　passHref>
-                    <button>削除</button>
-                </Link>
-            </li>
+            <Link href={`/authentication/${authentication.id}/delete`}　passHref>
+                <button>削除</button>
+            </Link>
+        </li>
+    </>
 )
 }
 export default AuthenticationListLine

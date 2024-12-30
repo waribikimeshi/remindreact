@@ -36,7 +36,7 @@ export default function Page(){
         };
     
         fetchData();
-      }, []);  // 初回レンダリング時にデータを取得
+      }, [params.id]);  // URL直変更でもデータを取得。
 
     // //Next.jsのバージョンが15になってから、paramsの処理が非同期（async）になった
     // const { id } = await params;

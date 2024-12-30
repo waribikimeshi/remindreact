@@ -17,7 +17,6 @@ interface IAuthenticationCrudProps {
 //post
 const AuthenticationCrud = ({ onSubmit, defaultValues ,isReadOnly = false}: IAuthenticationCrudProps) => {
   const {  register, reset, handleSubmit, formState: { errors }, watch  } = useForm<IAuthentication>({ 
-    mode: "onChange",
     defaultValues 
   });
 

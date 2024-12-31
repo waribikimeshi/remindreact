@@ -41,10 +41,9 @@ export default function Page(){
       const handleSubmit = async (authentication:IAuthentication) => {
         console.log(authentication);
     
-        await Delete(params.id as string);
-    
-    
-        console.log("delete");
+        const result = await Delete(params.id as string);
+        
+        console.log("delete" + result);
     
         // return newAuthentication;
     

@@ -7,7 +7,7 @@ import Link from "next/link";
 import styles from "../../page.module.css"
 import { Suspense, useEffect, useState } from "react";
 import { IAuthentication } from "../../types";
-import { read, readAll } from "../../api";
+import { Read, ReadAll } from "../../api";
 import AuthenticationList from "@/app/components/templates/AuthenticationList";
 import AuthenticationCrud from "@/app/components/templates/AuthenticationCrud";
 import Head from "next/head";
@@ -32,7 +32,7 @@ export default function Page(){
 
         //データ取得関数定義
         const fetchData = async () => {
-            const result = await read(params.id as string);
+            const result = await Read(params.id as string);
             setAuthentication(result);
             console.log(result);
         };

@@ -5,7 +5,7 @@ import { redirect } from "next/navigation";
 import { IAuthentication } from "../types";
 import AuthenticationCrud from "@/app/components/templates/AuthenticationCrud";
 import { Metadata } from "next";
-import { create } from "../api";
+import { Create } from "../api";
 import Head from "next/head";
 import { useEffect, useState } from "react";
 
@@ -51,7 +51,7 @@ export default function Page(){
   const handleSubmit = async (authentication:IAuthentication) => {
     console.log(authentication);
 
-    const newAuthentication = await create(authentication);
+    const newAuthentication = await Create(authentication);
 
     //awaitとかいるのか
     //再描画

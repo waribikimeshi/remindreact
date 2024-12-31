@@ -1,7 +1,7 @@
 import { IAuthentication } from "./types";
 
 //TODO:サーバ落ちてたらエラーになる。SPAじゃなしやな
-export const readAll = async (): Promise<IAuthentication[]> => {
+export const ReadAll = async (): Promise<IAuthentication[]> => {
     const response = await fetch(`http://localhost:8080/v20241209/authentication/list`,{
     cache:"no-store", //SSRサーバサイドレンダリング
     });
@@ -10,7 +10,7 @@ export const readAll = async (): Promise<IAuthentication[]> => {
     return authenticationList;
 }
 
-export const create = async (authentication:IAuthentication): Promise<IAuthentication> => {
+export const Create = async (authentication:IAuthentication): Promise<IAuthentication> => {
     const response = await fetch(`http://localhost:8080/v20241209/authentication/post`,{
         method: "POST",
         headers:{
@@ -28,7 +28,7 @@ export const create = async (authentication:IAuthentication): Promise<IAuthentic
 }
 
 //なんかnext.js使えるのかね。。。
-export const read = async (id:string): Promise<IAuthentication> => {
+export const Read = async (id:string): Promise<IAuthentication> => {
     const response = await fetch(`http://localhost:8080/v20241209/authentication/get/${id}`,{
         cache:"no-store", //SSRサーバサイドレンダリング
     });
@@ -36,4 +36,15 @@ export const read = async (id:string): Promise<IAuthentication> => {
     const authentication = await response.json() ;
 
     return authentication;
+}
+
+
+export const Delete = async (id:string): Promise<string> => {
+    const response = await fetch(`http://localhost:8080/v20241209/authentication/delete/${id}`,{
+        method: "DELETE",
+        cache:"no-store", //SSRサーバサイドレンダリング
+    });
+
+    //TODO:エラー処理
+    return "とりあえず戻り値"
 }

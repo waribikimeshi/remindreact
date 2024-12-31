@@ -4,7 +4,7 @@ import Link from "next/link";
 import styles from "../../page.module.css"
 import { Suspense } from "react";
 import AuthenticationList from "@/app/components/templates/AuthenticationList";
-import { readAll } from "../api";
+import { ReadAll } from "../api";
 
 //getはサーバコンポーネントがいいらしい
 export const metadata: Metadata = {
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 export default async function Page() {
 
     //restから取得
-    const authenticationList = await readAll();
+    const authenticationList = await ReadAll();
 
     return (
     

@@ -1,7 +1,7 @@
 // "use client"  //consoleはF12のブラウザ側。
 // 部品にあるべきではないのかね。親でクライアント読み込んでる部品はクライアントになるらしい
 
-import { create } from '@/app/authentication/api';
+import { Create } from '@/app/authentication/api';
 import { IAuthentication } from '@/app/authentication/types';
 import Link from 'next/link';
 import React, { FormEvent, useEffect } from 'react'
@@ -118,7 +118,8 @@ const AuthenticationCrud = ({ onSubmit, defaultValues ,isReadOnly = false,isSubm
             type="checkbox"
             // defaultChecked={defaultValues?.lock}  // 初期値に応じて checkbox の状態を制御
             // defaultValue={"false"}
-            readOnly={isReadOnly} 
+            // readOnly={isReadOnly} 
+            disabled={isReadOnly} 
           />
           {errors.lock?.message}
         </div>
@@ -130,7 +131,8 @@ const AuthenticationCrud = ({ onSubmit, defaultValues ,isReadOnly = false,isSubm
             {...register("enabled",{})}
             type="checkbox"
             // defaultValue={"true"}
-            readOnly={isReadOnly} 
+            // readOnly={isReadOnly} 
+            disabled={isReadOnly} 
           />
           {errors.enabled?.message}
         </div>

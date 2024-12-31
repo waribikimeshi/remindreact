@@ -60,7 +60,7 @@ export default function Page(){
                 <title>read | remindreact</title>
             </Head>        
             {/* <Suspense fallback={<div>Loading...</div>}> */}
-            <AuthenticationCrud defaultValues={authentication} isReadOnly={true}/>
+            <AuthenticationCrud defaultValues={authentication} isReadOnly={true} isSubmit={false}/>
             {/* <AuthenticationCrud defaultValues={authentication} /> */}
             {/* </Suspense> */}
 

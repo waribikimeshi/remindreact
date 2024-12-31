@@ -150,5 +150,6 @@ handleSubmit:フォームを submit した時の処理をかけます。handleSu
 formState:フォームの状態を object で管理。formState: { errors, isDirty, isSubmitting, touchedFields, submitCount }
 Props:デフォルト onSubmit。mode とかカスタマイズできる。
 checkbox の必須チェックは true 以外エラーになる。値が入ってるって意味じゃない。false でハマった。
+再描画は reset つかうみたい
 
 とりあえずソースがバラケルのが気になるな。どこに何書いてるか把握できなくなりそう

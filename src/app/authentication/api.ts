@@ -38,6 +38,22 @@ export const Read = async (id:string): Promise<IAuthentication> => {
     return authentication;
 }
 
+export const Update = async (authentication:IAuthentication): Promise<IAuthentication> => {
+    const response = await fetch(`http://localhost:8080/v20241209/authentication/patch`,{
+        method: "PATCH",
+        headers:{
+            "content-type" : "application/json",
+        },
+        body: JSON.stringify(authentication),
+        }
+    );
+
+    //TODO:エラー処理
+    
+    const newAuthentication = await response.json();
+
+    return newAuthentication;
+}
 
 export const Delete = async (id:string): Promise<string> => {
     const response = await fetch(`http://localhost:8080/v20241209/authentication/delete/${id}`,{

@@ -92,12 +92,14 @@ export default function Page() {
                 )}
 
                 {/* ローディング状態の表示 */}
-                {isLoading ? (
+                {isLoading && (
                     <div>Loading...</div> // データ読み込み中の表示
-                ) : (
-                    // データがロードされたらリストを表示
+                )}
+
+                {/* データがロードされたらリストを表示 */}
+                {!isLoading && (
                     <AuthenticationList authenticationList={authenticationList} />
-                )}                
+                )}
             </div>
 
         </>

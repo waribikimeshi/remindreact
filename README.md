@@ -144,6 +144,7 @@ react
 ９　"use client"は親で定義してたら部品もクライアントになる
 １０ 左下の errors × ボタンは開発モードの時に出るらしい
 １１ 本番ビルドすると未使用変数とかエラーになるな。typescript とか eslint とか
+１２ ts と tsx の違いは JSX 含むのからしい。わかりにくっ
 
 react hook form
 register:フォームから入力された値の state 管理、バリデーション処理

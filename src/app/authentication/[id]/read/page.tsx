@@ -31,14 +31,14 @@ export default function Page(){
         console.log("副作用");
 
         //データ取得関数定義
-        const fetchData = async () => {
+        const fetchAuthentication = async () => {
             const result = await Read(params.id as string);
             setAuthentication(result);
             console.log(result);
         };
 
         //データ取得の実行
-        fetchData();
+        fetchAuthentication();
 
       }, [params.id]);  // URL直変更でもデータを取得。
 

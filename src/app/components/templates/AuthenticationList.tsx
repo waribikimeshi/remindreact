@@ -12,9 +12,16 @@ const AuthenticationList = ({authenticationList}:IAuthenticationListProps) => {
         <>
             <AuthenticationAdd />
             <ul>
-                {authenticationList.map((authentication:IAuthentication) => (
-                    <AuthenticationListLine key={authentication.id} authentication={authentication} />
-                ))}
+                    {authenticationList.length > 0 ? (
+                            authenticationList.map((authentication:IAuthentication) => (
+                                <AuthenticationListLine key={authentication.id} authentication={authentication} />
+                                
+                            ))
+                        ) : (
+                            <li>対象データがありません。</li> // データがない場合
+                        )
+                    }
+
             </ul>
         </>
 )

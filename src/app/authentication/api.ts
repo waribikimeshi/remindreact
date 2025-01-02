@@ -33,20 +33,52 @@ export const ReadAll = async (): Promise<IAuthentication[]> => {
 }
 
 export const Create = async (authentication:IAuthentication): Promise<IAuthentication> => {
-    const response = await fetch(`http://localhost:8080/v20241209/authentication/post`,{
-        method: "POST",
-        headers:{
-            "content-type" : "application/json",
-        },
-        body: JSON.stringify(authentication),
-        }
-    );
 
-    //TODO:エラー処理
+    try {
+        const response = await fetch(`http://localhost:8080/v20241209/authentication/post`,{
+            method: "POST",
+            headers:{
+                "content-type" : "application/json",
+            },
+            body: JSON.stringify(authentication),
+            }
+        );
     
-    const newAuthentication = await response.json();
+        // レスポンスのステータスが200番台でない場合はエラーを投げる
+        // レスポンスって、一回読むともう読めない
+        if (!response.ok) {
+                // エラーレスポンスをJSONとして取得
+                const errorResponse = await response.json();
 
-    return newAuthentication;
+                console.error('Error response:', errorResponse);
+
+                throw new Error(`データ登録に失敗しました。
+                    詳細：HTTPエラー${errorResponse.httpstatus} ${errorResponse.title} ${errorResponse.messages}`);
+        }
+
+        const newAuthentication = await response.json();
+
+        return newAuthentication;
+    
+    } catch (error) {
+        //TypeError: fetch failed
+
+        // エラーメッセージをログに出力
+        console.error('createのfetchに失敗!:', error);
+
+        if (error instanceof Error) {
+            if (error.message.includes('HTTPエラー')) {
+                throw new Error(error.message);
+            } else {            
+                throw new Error(`データ登録に失敗しました。
+                    詳細: サーバダウン・URL誤り・ネットワーク切断の可能性`);
+            }
+        }else{
+            throw error;
+        }
+
+    }
+
 }
 
 //なんかnext.js使えるのかね。。。

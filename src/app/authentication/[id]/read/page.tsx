@@ -27,7 +27,7 @@ export default function Page(){
     // 状態の定義
     const [authentication, setAuthentication] = useState<IAuthentication | undefined>(undefined);
     const [error, setError] = useState<string | null>(null); // エラー管理
-    const [isLoading, setIsLoading] = useState<boolean>(true); // ローディング状態
+    const [isLoading, setIsLoading] = useState<boolean>(false); // ローディング状態
 
     //初期化 reactはstate駆動になってる。DOM操作と書き方違うだけ。だいぶ省略できるね
     const init = () =>{

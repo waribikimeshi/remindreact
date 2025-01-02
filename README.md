@@ -113,7 +113,7 @@ crud 削除ボタン
 ナビゲーション
 css Tailwind っての使った方がいいんだろね。インストールから必要。bootstrap とかも使えるみたいだけど
 javascipt そういや promise ってあったな。なんだっけ？非同期的なものやった気が。
-useEffect 非推奨らしい
+useEffect 非推奨らしい ⇒ ユーチューブの誤情報
 json server ってのがモック使える
 server component react18 から app 配下は基本サーバコンポーネント。serveraction はシンプルに画面 submit
 クライアントコンポーネントはファイルの先頭行に記載。イベント処理など
@@ -129,8 +129,8 @@ templates(テンプレート)ページ構造とかレイアウト構成とか。
 pages(ページ)template に実データ反映されたもの。next.js の page.tsx なので components には作らない。
 個別画面は app 直下に画面フォルダ/[id]
 
-ツール
-VsCode の拡張機能 ES7 React/Redux/GraphQL/React-Native snippets 「rafce」でひな形ソース展開してくれる
+便利コマンド
+rafce:でひな形ソース展開してくれる。VsCode の拡張機能 ES7 React/Redux/GraphQL/React-Native snippets
 
 react
 １ まず表示したいページにどういう部品に分割するかの単位でタグ。検索エリア＋リスト＋新規追加ボタン＋行編集＋行削除＋フッタ保存

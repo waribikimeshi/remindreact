@@ -9,6 +9,8 @@ import AuthenticationList from "@/app/components/templates/AuthenticationList";
 import { ReadAll } from "../api";
 import Head from "next/head";
 import { IAuthentication } from "../types";
+import MyError from "@/app/components/molecules/MyError";
+import MyLoading from "@/app/components/molecules/MyLoading";
 
 // //getはサーバコンポーネントがいいらしい
 // export const metadata: Metadata = {
@@ -85,15 +87,12 @@ export default function Page() {
 
                 {/* エラーメッセージがある場合の表示 */}
                 {error && (
-                    <div style={{ color: 'red', marginBottom: '20px' }}>
-                        {error}
-                        <button onClick={handleRetry} style={{ marginLeft: '10px' }}>再試行</button>
-                    </div>
+                    <MyError error={error} handleRetry={handleRetry} />
                 )}
 
                 {/* ローディング状態の表示 */}
                 {isLoading && (
-                    <div>Loading...</div> // データ読み込み中の表示
+                    <MyLoading />
                 )}
 
                 {/* データがロードされたらリストを表示 */}

@@ -1,7 +1,7 @@
 import { IAuthentication } from '@/app/authentication/types'
 import React from 'react'
-import AuthenticationListLine from '../molecules/AuthenticationListLine';
-import AuthenticationAdd from '../molecules/AuthenticationListAdd';
+import AuthenticationListLine from '../organisms/AuthenticationListLine';
+import AuthenticationAdd from '../organisms/AuthenticationListAdd';
 
 interface IAuthenticationListProps{
     authenticationList: IAuthentication[];

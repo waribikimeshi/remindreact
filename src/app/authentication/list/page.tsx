@@ -87,6 +87,7 @@ export default function Page() {
         fetchAuthenticationList(); // データを再取得
     };    
 
+    console.log('レンダリング');
     return (
     
         <>

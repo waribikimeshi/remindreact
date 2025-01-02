@@ -1,6 +1,6 @@
 import { IAuthentication } from "./types";
 
-//TODO:サーバ落ちてたらエラーになる。SPAじゃなしやな
+//サーバ落ちてたらエラーになる。SPAじゃなしやな⇒エラーは開発モードで表示されるらしい
 export const ReadAll = async (): Promise<IAuthentication[]> => {
     try {
         const response = await fetch(`http://localhost:8080/v20241209/authentication/list`, {
@@ -51,13 +51,36 @@ export const Create = async (authentication:IAuthentication): Promise<IAuthentic
 
 //なんかnext.js使えるのかね。。。
 export const Read = async (id:string): Promise<IAuthentication> => {
-    const response = await fetch(`http://localhost:8080/v20241209/authentication/get/${id}`,{
-        cache:"no-store", //SSRサーバサイドレンダリング
-    });
-    
-    const authentication = await response.json() ;
 
-    return authentication;
+    try {
+        const response = await fetch(`http://localhost:8080/v20241209/authentication/get/${id}`,{
+            cache: "no-store", // SSRサーバサイドレンダリング
+        });
+
+        // レスポンスのステータスが200番台でない場合はエラーを投げる
+        if (!response.ok) {
+            throw new Error(`HTTP エラー! Status: ${response.status}`);
+        }
+
+        const authentication = await response.json() ;
+
+        return authentication;
+
+    } catch (error) {
+        //TypeError: fetch failed
+
+        // エラーメッセージをログに出力
+        console.error('Readのfetchに失敗!:', error);
+
+        if (error instanceof Error) {
+            throw new Error(`データ取得に失敗しました。
+                詳細: サーバダウン・URL誤り・ネットワーク切断の可能性`);
+        }else{
+            throw error;
+        }
+
+    }
+
 }
 
 export const Update = async (authentication:IAuthentication): Promise<IAuthentication> => {

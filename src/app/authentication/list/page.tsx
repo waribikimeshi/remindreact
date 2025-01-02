@@ -25,16 +25,26 @@ export default function Page() {
     const [error, setError] = useState<string | null>(null); // エラー管理
     const [isLoading, setIsLoading] = useState<boolean>(true); // ローディング状態
 
+    //初期化
+    const init = () =>{
+
+        setAuthenticationList([]); // 前回の結果をクリア
+
+        setError(null); // エラー状態をリセット
+
+    };
+
     // データを取得する非同期関数
     const fetchAuthenticationList = async () => {
         try {
+            init();
+
             setIsLoading(true); // ローディング開始
 
             // ReadAll関数でデータを取得
             const result = await ReadAll();
-            setAuthenticationList(result); // データを状態にセット
 
-            setError(null); // エラーが発生しない場合はエラー状態をクリア
+            setAuthenticationList(result); // データを状態にセット
             
         } catch (error: unknown) {
             if (error instanceof Error) {
@@ -46,6 +56,7 @@ export default function Page() {
             }
     
             console.error('ReadAllのfetchに失敗!:', error);
+
             setAuthenticationList([]); // 空の配列を設定して、表示をクリア
 
         } finally {
@@ -60,9 +71,9 @@ export default function Page() {
 
     // 再試行ボタンのクリックイベント
     const handleRetry = () => {
-        setAuthenticationList([]); // 前回の結果をクリア
-        setError(null); // エラー状態をリセット
-        setIsLoading(true); // ローディング開始
+
+        init();
+
         fetchAuthenticationList(); // データを再取得
     };    
 

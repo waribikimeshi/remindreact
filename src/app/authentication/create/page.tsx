@@ -4,7 +4,7 @@ import { IAuthentication } from "../types";
 import AuthenticationCrud from "@/app/components/templates/AuthenticationCrud";
 import { Create } from "../api";
 import Head from "next/head";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import MyLoading from "@/app/components/molecules/MyLoading";
 import MyError from "@/app/components/molecules/MyError";
 import MyInfo from "@/app/components/molecules/MyInfo";
@@ -39,6 +39,7 @@ export default function Page(){
   const [error, setError] = useState<string | null>(null); // エラー管理
   const [info, setInfo] = useState<string | null>(null); // インフォ管理
   const [isLoading, setIsLoading] = useState<boolean>(false); // ローディング状態
+  const isSubmiting = useRef<boolean>(false); //二度押し防止。再レンダリングされないらしい
 
   //初期化 reactはstate駆動になってる。DOM操作と書き方違うだけ。だいぶ省略できるね
   const init = () =>{
@@ -63,6 +64,8 @@ export default function Page(){
 
   //イベントは各画面から。これは入力値なのでサーバサイドレンダリングできないと思う。
   const handleSubmit = async (authentication:IAuthentication) => {
+    if(isSubmiting.current) return; //送信処理中なら抜ける
+    isSubmiting.current = true; //送信処理中
 
     try {
         console.log("handleSubmit");
@@ -102,6 +105,7 @@ export default function Page(){
 
     } finally {
         setIsLoading(false); // ローディング終了
+        isSubmiting.current = false; //送信完了
     }            
 
 

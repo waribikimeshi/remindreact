@@ -1,8 +1,8 @@
 import React, { MouseEventHandler } from 'react'
 
 interface IMyErrorProps{
-    error: string | null;
-    handleRetry: MouseEventHandler<HTMLButtonElement>;
+    error: string;
+    handleRetry?: MouseEventHandler<HTMLButtonElement>;
 }
 
 const MyError = ({error,handleRetry}:IMyErrorProps) => {
@@ -10,7 +10,9 @@ const MyError = ({error,handleRetry}:IMyErrorProps) => {
     <>
     <div style={{ color: 'red', marginBottom: '20px' }}>
         {error}
-        <button onClick={handleRetry} style={{ marginLeft: '10px' }}>再試行</button>
+        {handleRetry && (
+            <button onClick={handleRetry} style={{ marginLeft: '10px' }}>再試行</button>
+        )}
     </div>
 
       

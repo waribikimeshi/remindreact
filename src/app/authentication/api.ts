@@ -8,8 +8,15 @@ export const ReadAll = async (): Promise<IAuthentication[]> => {
         });
 
         // レスポンスのステータスが200番台でない場合はエラーを投げる
+        // レスポンスって、一回読むともう読めない
         if (!response.ok) {
-            throw new Error(`HTTP エラー! Status: ${response.status}`);
+            // エラーレスポンスをJSONとして取得
+            const errorResponse = await response.json();
+
+            console.error('Error response:', errorResponse);
+
+            throw new Error(`データ取得に失敗しました。
+                詳細：HTTPエラー${errorResponse.httpstatus} ${errorResponse.title} ${errorResponse.messages}`);
         }
 
         const authenticationList = await response.json();
@@ -23,8 +30,12 @@ export const ReadAll = async (): Promise<IAuthentication[]> => {
         console.error('ReadAllのfetchに失敗!:', error);
 
         if (error instanceof Error) {
-            throw new Error(`データ取得に失敗しました。
-                詳細: サーバダウン・URL誤り・ネットワーク切断の可能性`);
+            if (error.message.includes('HTTPエラー')) {
+                throw new Error(error.message);
+            } else {            
+                throw new Error(`データ取得に失敗しました。
+                    詳細: サーバダウン・URL誤り・ネットワーク切断の可能性`);
+            }
         }else{
             throw error;
         }
@@ -90,8 +101,15 @@ export const Read = async (id:string): Promise<IAuthentication> => {
         });
 
         // レスポンスのステータスが200番台でない場合はエラーを投げる
+        // レスポンスって、一回読むともう読めない
         if (!response.ok) {
-            throw new Error(`HTTP エラー! Status: ${response.status}`);
+            // エラーレスポンスをJSONとして取得
+            const errorResponse = await response.json();
+
+            console.error('Error response:', errorResponse);
+
+            throw new Error(`データ取得に失敗しました。
+                詳細：HTTPエラー${errorResponse.httpstatus} ${errorResponse.title} ${errorResponse.messages}`);
         }
 
         const authentication = await response.json() ;
@@ -104,9 +122,16 @@ export const Read = async (id:string): Promise<IAuthentication> => {
         // エラーメッセージをログに出力
         console.error('Readのfetchに失敗!:', error);
 
+        // エラーメッセージをログに出力
+        console.error('ReadAllのfetchに失敗!:', error);
+
         if (error instanceof Error) {
-            throw new Error(`データ取得に失敗しました。
-                詳細: サーバダウン・URL誤り・ネットワーク切断の可能性`);
+            if (error.message.includes('HTTPエラー')) {
+                throw new Error(error.message);
+            } else {            
+                throw new Error(`データ取得に失敗しました。
+                    詳細: サーバダウン・URL誤り・ネットワーク切断の可能性`);
+            }
         }else{
             throw error;
         }

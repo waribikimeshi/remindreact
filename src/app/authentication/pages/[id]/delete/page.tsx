@@ -2,14 +2,15 @@
 "use client"  //consoleはF12のブラウザ側
 
 import { useEffect, useRef, useState } from "react";
-import { IAuthentication } from "../../types";
+import { IAuthentication } from "../../../types";
 import AuthenticationCrud from "@/app/components/templates/AuthenticationCrud";
 import Head from "next/head";
 import { useParams } from "next/navigation";
+import MyInfo from "@/app/components/molecules/MyInfo";
 import MyError from "@/app/components/molecules/MyError";
 import MyLoading from "@/app/components/molecules/MyLoading";
-import MyInfo from "@/app/components/molecules/MyInfo";
-import { Read, Update } from "../../request/api";
+import { Delete, Read } from "../../../request/api";
+
 
 //クライアントレンダリングでasync awaitはエラーになる
 export default function Page(){
@@ -66,8 +67,9 @@ export default function Page(){
             setIsLoading(false); // ローディング終了
         }            
     };
+    
 
-
+    
     //レンダリングの後に中身が実行される。第二引数は実行するタイミングを指定。空の配列はリロード時のみ実行。変数指定すると変化した際に実行。
     useEffect(() => {
         console.log('useEffect');
@@ -75,6 +77,7 @@ export default function Page(){
         fetchAuthentication();  // データを取得
 
       }, [params.id]);  // URL直変更でもデータを取得。
+
 
     // 再試行ボタンのクリックイベント
     const handleRetry = () => {
@@ -86,8 +89,10 @@ export default function Page(){
     };    
 
 
-      //イベントは各画面から。これは入力値なのでサーバサイドレンダリングできないと思う。
+    //イベントは各画面から。これは入力値なのでサーバサイドレンダリングできないと思う。
       const handleSubmit = async (authentication:IAuthentication) => {
+        
+        // return newAuthentication;
         if(isSubmiting.current) return; //送信処理中なら抜ける
         isSubmiting.current = true; //送信処理中
     
@@ -98,17 +103,17 @@ export default function Page(){
 
             setIsLoading(true); // ローディング開始
 
-            console.log('データ登録');
+            console.log('データ削除');
 
             // Update関数でデータを登録
-            const newAuthentication = await Update(authentication);
+            const result = await Delete(params.id as string);
 
-            setAuthentication(newAuthentication); // データを状態にセット
+            setAuthentication(undefined); // データを状態にセット
 
-            console.log(newAuthentication);
+            console.log(result);
 
             //完了メッセージ
-            setInfo("更新されました");
+            setInfo("削除されました");
 
             //登録非活性
 
@@ -132,15 +137,14 @@ export default function Page(){
             isSubmiting.current = false; //送信完了
         }            
     
-    };
-
+      };
+    
       console.log("レンダリング");
-
       return(
         <>
 
             <Head>
-                <title>update | remindreact</title>
+                <title>delete | remindreact</title>
             </Head>
             {/* インフォメッセージがある場合の表示 */}
             {info && (
@@ -159,8 +163,9 @@ export default function Page(){
 
             {/* データがロードされたら表示 */}
             {!isLoading && (
-                <AuthenticationCrud onSubmit={handleSubmit} defaultValues={authentication}/>
+                <AuthenticationCrud onSubmit={handleSubmit} defaultValues={authentication} isReadOnly={true}/>
             )}
+
 
         </>
     );

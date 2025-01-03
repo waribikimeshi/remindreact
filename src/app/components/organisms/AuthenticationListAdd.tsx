@@ -7,7 +7,7 @@ const AuthenticationAdd = () => {
   return (
     <>
       <div>
-        <Link href="/authentication/create"　passHref>
+        <Link href="/authentication/pages/create"　passHref>
           <button>新規</button>
         </Link>
 

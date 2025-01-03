@@ -12,15 +12,15 @@ const AuthenticationListLine = ({authentication}:IAuthenticationListLineProps) =
         <li key={authentication.id}>
             <span>{authentication.mailAddress}</span>
 
-            <Link href={`/authentication/${authentication.id}/read`}　passHref>
+            <Link href={`/authentication/pages/${authentication.id}/read`}　passHref>
                 <button>参照</button>
             </Link>
 
-            <Link href={`/authentication/${authentication.id}/update`}　passHref>
+            <Link href={`/authentication/pages/${authentication.id}/update`}　passHref>
                 <button>更新</button>
             </Link>
 
-            <Link href={`/authentication/${authentication.id}/delete`}　passHref>
+            <Link href={`/authentication/pages/${authentication.id}/delete`}　passHref>
                 <button>削除</button>
             </Link>
         </li>

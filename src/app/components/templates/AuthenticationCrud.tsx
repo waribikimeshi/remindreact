@@ -187,7 +187,7 @@ const AuthenticationCrud = ({ onSubmit, defaultValues ,isReadOnly = false,isSubm
         </div>
         <div>
           {isSubmit && <button type="submit">実行</button>}
-          <Link href="/authentication/list" passHref>
+          <Link href="/authentication/pages/list" passHref>
             <button>戻る</button>
           </Link>
 

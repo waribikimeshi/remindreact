@@ -1,4 +1,4 @@
-import { IAuthentication } from "./types";
+import { IAuthentication } from "../types";
 
 //サーバ落ちてたらエラーになる。SPAじゃなしやな⇒エラーは開発モードで表示されるらしい
 export const ReadAll = async (): Promise<IAuthentication[]> => {

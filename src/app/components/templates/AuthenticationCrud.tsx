@@ -11,12 +11,17 @@ interface IAuthenticationCrudProps {
   defaultValues?: IAuthentication; // 編集用のデフォルト値（更新時など）postはundefined許可
   isReadOnly?: boolean; //参照のみか
   isSubmit?: boolean; //実行ボタン
+  hrefReturn: string;
+
 }
 
 
 //post
-const AuthenticationCrud = ({ onSubmit, defaultValues ,isReadOnly = false,isSubmit = true}: IAuthenticationCrudProps) => {
-  const {  register, reset, handleSubmit, formState: { errors }, watch  } = useForm<IAuthentication>({ 
+const AuthenticationCrud = (
+  { onSubmit, defaultValues ,isReadOnly = false,isSubmit = true,hrefReturn}
+  : IAuthenticationCrudProps) => {
+  
+    const {  register, reset, handleSubmit, formState: { errors }, watch  } = useForm<IAuthentication>({ 
     defaultValues 
   });
 
@@ -187,7 +192,7 @@ const AuthenticationCrud = ({ onSubmit, defaultValues ,isReadOnly = false,isSubm
         </div>
         <div>
           {isSubmit && <button type="submit">実行</button>}
-          <Link href="/authentication/pages/list" passHref>
+          <Link href={`${hrefReturn}`} passHref>
             <button>戻る</button>
           </Link>
 

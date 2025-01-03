@@ -134,7 +134,11 @@ export default function Page(){
 
             {/* データがロードされたら表示 */}
             {!isLoading && (
-                <AuthenticationCrud onSubmit={handleSubmit} defaultValues={authentication}/>
+                <AuthenticationCrud 
+                onSubmit={handleSubmit} 
+                defaultValues={authentication}
+                hrefReturn="/authentication/pages/list"
+                />
             )}
         </>
     );

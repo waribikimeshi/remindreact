@@ -125,7 +125,12 @@ export default function Page(){
 
             {/* データがロードされたらリストを表示 */}
             {!isLoading && (
-                <AuthenticationCrud defaultValues={authentication} isReadOnly={true} isSubmit={false}/>
+                <AuthenticationCrud 
+                defaultValues={authentication} 
+                isReadOnly={true} 
+                isSubmit={false}
+                hrefReturn="/authentication/pages/list"
+                />
             )}
 
 

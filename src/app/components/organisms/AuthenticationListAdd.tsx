@@ -11,7 +11,7 @@ const AuthenticationAdd = ({hrefCreate}:IAuthenticationAddProps) => {
     <>
       <div>
         <Link href={`${hrefCreate}`}　passHref>
-          <button>新規</button>
+          <button>追加</button>
         </Link>
 
       </div>

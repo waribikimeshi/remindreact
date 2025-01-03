@@ -5,12 +5,12 @@
 import styles from "../../page.module.css"
 import { useEffect, useState } from "react";
 import { IAuthentication } from "../../types";
-import { Read } from "../../api";
 import AuthenticationCrud from "@/app/components/templates/AuthenticationCrud";
 import Head from "next/head";
 import { useParams } from "next/navigation";
 import MyError from "@/app/components/molecules/MyError";
 import MyLoading from "@/app/components/molecules/MyLoading";
+import { Read } from "../../request/api";
 
 //getはサーバコンポーネントがいいらしい
 //サーバクライアントでしか使えない。クライアントはheadタグで

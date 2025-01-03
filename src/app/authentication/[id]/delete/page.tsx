@@ -3,13 +3,13 @@
 
 import { useEffect, useRef, useState } from "react";
 import { IAuthentication } from "../../types";
-import { Delete, Read } from "../../api";
 import AuthenticationCrud from "@/app/components/templates/AuthenticationCrud";
 import Head from "next/head";
 import { useParams } from "next/navigation";
 import MyInfo from "@/app/components/molecules/MyInfo";
 import MyError from "@/app/components/molecules/MyError";
 import MyLoading from "@/app/components/molecules/MyLoading";
+import { Delete, Read } from "../../request/api";
 
 
 //クライアントレンダリングでasync awaitはエラーになる

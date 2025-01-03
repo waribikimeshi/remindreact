@@ -1,7 +1,6 @@
 // "use client"  //consoleはF12のブラウザ側。
 // 部品にあるべきではないのかね。親でクライアント読み込んでる部品はクライアントになるらしい
 
-import { Create } from '@/app/authentication/api';
 import { IAuthentication } from '@/app/authentication/types';
 import Link from 'next/link';
 import React, { FormEvent, useEffect } from 'react'

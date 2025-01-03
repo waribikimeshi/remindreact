@@ -2,12 +2,12 @@
 
 import { IAuthentication } from "../types";
 import AuthenticationCrud from "@/app/components/templates/AuthenticationCrud";
-import { Create } from "../api";
 import Head from "next/head";
 import { useEffect, useRef, useState } from "react";
 import MyLoading from "@/app/components/molecules/MyLoading";
 import MyError from "@/app/components/molecules/MyError";
 import MyInfo from "@/app/components/molecules/MyInfo";
+import { Create } from "../request/api";
 
 //サーバクライアントでしか使えない。クライアントはheadタグで
 // export const metadata: Metadata = {

@@ -5,11 +5,11 @@ import Link from "next/link";
 import styles from "../../page.module.css"
 import { useEffect, useState } from "react";
 import AuthenticationList from "@/app/components/templates/AuthenticationList";
-import { ReadAll } from "../api";
 import Head from "next/head";
 import { IAuthentication } from "../types";
 import MyError from "@/app/components/molecules/MyError";
 import MyLoading from "@/app/components/molecules/MyLoading";
+import { ReadAll } from "../request/api";
 
 // //getはサーバコンポーネントがいいらしい
 // export const metadata: Metadata = {

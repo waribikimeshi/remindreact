@@ -95,33 +95,31 @@ export default function Page() {
                 <title>list | remindreact</title>
             </Head>        
 
-            <div className="container">
-                {/* <div className={styles.sitetitle}>http://localhost:3000/authentication/list</div>
-                <div>リスト</div>
-                <div>app\authentication\list\page.tsx</div> */}
-                <p><Link href="/">エントリポイントへ遷移</Link></p>
-                {/* <p><Link href="/authentication/create">createへ遷移</Link></p> */}
+            {/* <div className={styles.sitetitle}>http://localhost:3000/authentication/list</div>
+            <div>リスト</div>
+            <div>app\authentication\list\page.tsx</div> */}
+            <p><Link href="/">エントリポイントへ遷移</Link></p>
+            {/* <p><Link href="/authentication/create">createへ遷移</Link></p> */}
 
 
-                {/* <Suspense fallback={<div>Loading...</div>}> */}
-                {/* <AuthenticationList authenticationList={authenticationList}/> */}
-                {/* </Suspense> */}
+            {/* <Suspense fallback={<div>Loading...</div>}> */}
+            {/* <AuthenticationList authenticationList={authenticationList}/> */}
+            {/* </Suspense> */}
 
-                {/* エラーメッセージがある場合の表示 */}
-                {error && (
-                    <MyError error={error} handleRetry={handleRetry} />
-                )}
+            {/* エラーメッセージがある場合の表示 */}
+            {error && (
+                <MyError error={error} handleRetry={handleRetry} />
+            )}
 
-                {/* ローディング状態の表示 */}
-                {isLoading && (
-                    <MyLoading />
-                )}
+            {/* ローディング状態の表示 */}
+            {isLoading && (
+                <MyLoading />
+            )}
 
-                {/* データがロードされたらリストを表示 */}
-                {!isLoading && (
-                    <AuthenticationList authenticationList={authenticationList} />
-                )}
-            </div>
+            {/* データがロードされたらリストを表示 */}
+            {!isLoading && (
+                <AuthenticationList authenticationList={authenticationList} />
+            )}
 
         </>
     )

@@ -157,7 +157,7 @@ export default function Page(){
                 <MyLoading />
             )}
 
-            {/* データがロードされたらリストを表示 */}
+            {/* データがロードされたら表示 */}
             {!isLoading && (
                 <AuthenticationCrud onSubmit={handleSubmit} defaultValues={authentication}/>
             )}

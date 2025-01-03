@@ -132,7 +132,10 @@ export default function Page(){
                 <MyLoading />
             )}
 
-            <AuthenticationCrud onSubmit={handleSubmit} defaultValues={authentication}/>
+            {/* データがロードされたら表示 */}
+            {!isLoading && (
+                <AuthenticationCrud onSubmit={handleSubmit} defaultValues={authentication}/>
+            )}
         </>
     );
 }

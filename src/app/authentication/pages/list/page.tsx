@@ -118,7 +118,12 @@ export default function Page() {
 
             {/* データがロードされたらリストを表示 */}
             {!isLoading && (
-                <AuthenticationList authenticationList={authenticationList} />
+                <AuthenticationList authenticationList={authenticationList} 
+                hrefCreate="/authentication/pages/create"
+                hrefRead="/authentication/pages/read/"
+                hrefUpdate="/authentication/pages/update/"
+                hrefDelete="/authentication/pages/delete/"
+                />
             )}
 
         </>

@@ -2,12 +2,15 @@ import { IAuthentication } from '@/app/authentication/types'
 import Link from 'next/link'
 import React from 'react'
 
+interface IAuthenticationAddProps{
+  hrefCreate: string;
+}
 
-const AuthenticationAdd = () => {
+const AuthenticationAdd = ({hrefCreate}:IAuthenticationAddProps) => {
   return (
     <>
       <div>
-        <Link href="/authentication/pages/create"　passHref>
+        <Link href={`${hrefCreate}`}　passHref>
           <button>新規</button>
         </Link>
 

@@ -5,16 +5,30 @@ import AuthenticationAdd from '../organisms/AuthenticationListAdd';
 
 interface IAuthenticationListProps{
     authenticationList: IAuthentication[];
+    hrefCreate: string;
+    hrefRead: string;
+    hrefUpdate: string;
+    hrefDelete: string;
 }
 
-const AuthenticationList = ({authenticationList}:IAuthenticationListProps) => {
+const AuthenticationList = (
+    {authenticationList,hrefCreate,hrefRead,hrefUpdate,hrefDelete}
+    :IAuthenticationListProps) => {
   return (
         <>
-            <AuthenticationAdd />
+            <AuthenticationAdd 
+            hrefCreate={hrefCreate}
+            />
             <ul>
                     {authenticationList.length > 0 ? (
                             authenticationList.map((authentication:IAuthentication) => (
-                                <AuthenticationListLine key={authentication.id} authentication={authentication} />
+                                <AuthenticationListLine 
+                                key={authentication.id} 
+                                authentication={authentication} 
+                                hrefRead={hrefRead}
+                                hrefUpdate={hrefUpdate}
+                                hrefDelete={hrefDelete}
+                                />
                                 
                             ))
                         ) : (

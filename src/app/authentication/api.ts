@@ -141,28 +141,94 @@ export const Read = async (id:string): Promise<IAuthentication> => {
 }
 
 export const Update = async (authentication:IAuthentication): Promise<IAuthentication> => {
-    const response = await fetch(`http://localhost:8080/v20241209/authentication/patch`,{
-        method: "PATCH",
-        headers:{
-            "content-type" : "application/json",
-        },
-        body: JSON.stringify(authentication),
-        }
-    );
 
     //TODO:エラー処理
-    
-    const newAuthentication = await response.json();
+    try {
+        const response = await fetch(`http://localhost:8080/v20241209/authentication/patch`,{
+            method: "PATCH",
+            headers:{
+                "content-type" : "application/json",
+            },
+            body: JSON.stringify(authentication),
+            }
+        );
+        
+        // レスポンスのステータスが200番台でない場合はエラーを投げる
+        // レスポンスって、一回読むともう読めない
+        if (!response.ok) {
+                // エラーレスポンスをJSONとして取得
+                const errorResponse = await response.json();
 
-    return newAuthentication;
+                console.error('Error response:', errorResponse);
+
+                throw new Error(`データ更新に失敗しました。
+                    詳細：HTTPエラー${errorResponse.httpstatus} ${errorResponse.title} ${errorResponse.messages}`);
+        }
+
+        const newAuthentication = await response.json();
+
+        return newAuthentication;
+        
+    } catch (error) {
+        //TypeError: fetch failed
+
+        // エラーメッセージをログに出力
+        console.error('patchのfetchに失敗!:', error);
+
+        if (error instanceof Error) {
+            if (error.message.includes('HTTPエラー')) {
+                throw new Error(error.message);
+            } else {            
+                throw new Error(`データ登録に失敗しました。
+                    詳細: サーバダウン・URL誤り・ネットワーク切断の可能性`);
+            }
+        }else{
+            throw error;
+        }
+
+    }
+
 }
 
-export const Delete = async (id:string): Promise<string> => {
-    const response = await fetch(`http://localhost:8080/v20241209/authentication/delete/${id}`,{
-        method: "DELETE",
-        cache:"no-store", //SSRサーバサイドレンダリング
-    });
+export const Delete = async (id:string): Promise<Boolean> => {
 
-    //TODO:エラー処理
-    return "とりあえず戻り値"
+    try {
+        const response = await fetch(`http://localhost:8080/v20241209/authentication/delete/${id}`,{
+            method: "DELETE",
+            cache:"no-store", //SSRサーバサイドレンダリング
+        });
+        
+        // レスポンスのステータスが200番台でない場合はエラーを投げる
+        // レスポンスって、一回読むともう読めない
+        if (!response.ok) {
+                // エラーレスポンスをJSONとして取得
+                const errorResponse = await response.json();
+
+                console.error('Error response:', errorResponse);
+
+                throw new Error(`データで駆除に失敗しました。
+                    詳細：HTTPエラー${errorResponse.httpstatus} ${errorResponse.title} ${errorResponse.messages}`);
+        }
+
+        return response.ok;
+    
+    } catch (error) {
+        //TypeError: fetch failed
+
+        // エラーメッセージをログに出力
+        console.error('deleteのfetchに失敗!:', error);
+
+        if (error instanceof Error) {
+            if (error.message.includes('HTTPエラー')) {
+                throw new Error(error.message);
+            } else {            
+                throw new Error(`データ削除に失敗しました。
+                    詳細: サーバダウン・URL誤り・ネットワーク切断の可能性`);
+            }
+        }else{
+            throw error;
+        }
+
+    }
+
 }

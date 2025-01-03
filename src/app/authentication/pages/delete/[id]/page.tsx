@@ -163,7 +163,12 @@ export default function Page(){
 
             {/* データがロードされたら表示 */}
             {!isLoading && (
-                <AuthenticationCrud onSubmit={handleSubmit} defaultValues={authentication} isReadOnly={true}/>
+                <AuthenticationCrud 
+                onSubmit={handleSubmit} 
+                defaultValues={authentication} isReadOnly={true}
+                hrefReturn="/authentication/pages/list"
+
+                />
             )}
 
 
